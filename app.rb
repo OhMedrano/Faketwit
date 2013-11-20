@@ -1,5 +1,9 @@
 require 'sinatra'
 require 'haml'
+require 'rake'
+require 'sinatra/activerecord'
+require 'sqlite3'
+
 
 
 get '/' do 
@@ -18,8 +22,4 @@ get '/about' do
   haml :about
 end
 
-post '/signup' do
-  name = #{params[:name]}
-  email = #{params[:Email]}
-  id = #{params[:id]}
-end
+
