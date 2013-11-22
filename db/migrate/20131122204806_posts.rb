@@ -1,13 +1,13 @@
 class Posts < ActiveRecord::Migration
   def up
-  	create_table :posts do |p|
-  		p.text :post
-  		p.integer :userid
+  	create_table :post do |p|
+  		p.text :body
+  		p.text :user_id
   		p.datetime :created_at
   	end
   end
 
   def down
-  	drop_table :posts
+  drop_table :post
   end
 end

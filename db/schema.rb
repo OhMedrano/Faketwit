@@ -10,20 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131122004358) do
+ActiveRecord::Schema.define(version: 20131122204806) do
 
-  create_table "posts", force: true do |t|
-    t.text     "post"
-    t.integer  "userid"
+  create_table "post", force: true do |t|
+    t.text     "body"
+    t.text     "user_id"
     t.datetime "created_at"
   end
 
   create_table "users", force: true do |t|
-    t.text "flname"
-    t.text "username"
-    t.text "email"
-    t.text "password_salt"
-    t.text "password_hash"
+    t.text     "fname"
+    t.text     "lname"
+    t.text     "email"
+    t.text     "uname"
+    t.text     "password_salt"
+    t.text     "password_hash"
+    t.datetime "created_at"
   end
 
 end

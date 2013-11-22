@@ -8,6 +8,7 @@ gem 'haml'
 gem 'rake'
 gem 'rack-flash3'
 gem 'bcrypt-ruby'
+gem 'html2haml'
 
 group :development do
   	gem 'sqlite3'

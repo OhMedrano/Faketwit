@@ -1,0 +1,21 @@
+%p Sign up here! 
+
+%form{action:"/signup", method:"POST"}
+	%label{for:'fname'} First Name:
+	%input{placeholder:'First name in here', type: "text", name:"[user]fname"}
+	%br
+	%label{for:'lname'}
+	%input{placeholder:'Last name in here', type:'text', name:'[user]lname'}
+	%br
+	%label{for:'email'} Email:
+	%input{placeholder:'Email here!',type: "text", name:"[user]email"}
+	%br
+	%label{for:'uname'} Username:
+	%input{placeholder:'Enter a unique username',type:"text", name:"[user]uname"}
+	%br
+	%label{for:'password'} Password:
+	%input{placeholder:'Enter a password', type:"text", name:"[user]password"}
+	%br
+	%input{type:"submit"}
+
+	
