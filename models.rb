@@ -20,11 +20,11 @@ class User < ActiveRecord::Base
 	end
 
 
-	has_many :posts
+	has_many :post
 
 end
 
-class Blogs < ActiveRecord::Base
+class Posts < ActiveRecord::Base
 
 	belongs_to :user
 
