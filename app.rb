@@ -4,7 +4,7 @@ require 'rake'
 require 'sinatra/activerecord'
 require 'sqlite3'
 
-
+set :database, 'sqlite3:///users.sqlite3'
 
 get '/' do 
   haml :home
