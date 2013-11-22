@@ -18,6 +18,7 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.1)
     atomic (1.1.14)
+    bcrypt-ruby (3.1.2)
     builder (3.1.4)
     haml (4.0.4)
       tilt
@@ -25,6 +26,8 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.2)
     rack (1.5.2)
+    rack-flash3 (1.0.5)
+      rack
     rack-protection (1.5.1)
       rack
     rake (10.1.0)
@@ -46,7 +49,9 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  bcrypt-ruby
   haml
+  rack-flash3
   rake
   sinatra
   sinatra-activerecord

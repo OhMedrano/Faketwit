@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131122000511) do
+ActiveRecord::Schema.define(version: 20131122004358) do
+
+  create_table "posts", force: true do |t|
+    t.text     "post"
+    t.integer  "userid"
+    t.datetime "created_at"
+  end
 
   create_table "users", force: true do |t|
     t.text "flname"

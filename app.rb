@@ -3,8 +3,13 @@ require 'haml'
 require 'rake'
 require 'sinatra/activerecord'
 require 'sqlite3'
+require 'rack-flash'
+require 'bcrypt'
 
-set :database, 'sqlite3:///users.sqlite3'
+configure(:development){set :database, 'sqlite3:///users.sqlite3'}
+
+
+require './models'
 
 get '/' do 
   haml :home

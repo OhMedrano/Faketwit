@@ -6,4 +6,10 @@ gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'haml'
 gem 'rake'
-gem 'sqlite3'
+gem 'rack-flash3'
+gem 'bcrypt-ruby'
+
+group :development do
+  	gem 'sqlite3'
+end
+
