@@ -32,13 +32,31 @@ get '/home' do
 	haml :home
 end
 
+#This post is just a temporary fix.
 post '/signup' do
 	@user = User.new(params['user'])
+	redirect '/'
+
+#I commented this out because it was giving me tons of problems with a 'Stack Too Deep' error.
+#Apparently, something is running and creating an infinite loop once someone creates an account,
+#Will work on it later on tonight. 
+
 	if @user.save
 		flash[:notice] = "Good times, now sign in and make a first post!"
 		redirect '/'
 	else
 		flash[:alert] = "Try again!"
 		redirect '/signup'
+	end
+
+end
+
+post '/home' do
+	@user = User.authenticate(params['user']['email'],params['user']['password'])
+	if @user
+		session[:user_id]
+		redirect '/profile'
+	else
+		redirect '/'
 	end
 end

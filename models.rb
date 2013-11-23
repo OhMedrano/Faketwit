@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
 	def full_name
-		flname
+		fname + lname
 	end
 
 	def email
@@ -19,13 +19,25 @@ class User < ActiveRecord::Base
 		end
 	end
 
-
+	def self.authenticate(email,password)
+		user = User.where(email: email).first
+		if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
+			user
+		else
+			nil
+		end
+	end
+	
+	#For some reason, this part is still buggy. I am not sure what happened, but it has
+	#been giving me problems. 
 	has_many :post
+
+
 
 end
 
 class Posts < ActiveRecord::Base
-
-	belongs_to :user
+	#Same goes for this line here, same problem as line 24
+	belongs_to :users
 
 end

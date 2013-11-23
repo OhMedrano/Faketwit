@@ -6,7 +6,7 @@ gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'haml'
 gem 'rake'
-gem 'rack-flash3'
+gem 'rack-flash3', :git => 'git://github.com/treeder/rack-flash.git'
 gem 'bcrypt-ruby'
 gem 'html2haml'
 
