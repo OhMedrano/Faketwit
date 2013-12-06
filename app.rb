@@ -6,8 +6,7 @@ require 'sqlite3'
 require 'rack-flash'
 require 'bcrypt'
 
-
-configure(:development){set :database, 'sqlite3:///users.sqlite3'}
+set :database, 'sqlite3:///users.sqlite3'
 
 
 require './models'
@@ -35,15 +34,14 @@ end
 #This post is just a temporary fix.
 post '/signup' do
 	@user = User.new(params['user'])
-	redirect '/'
-
+	redirect '/home'
 #I commented this out because it was giving me tons of problems with a 'Stack Too Deep' error.
 #Apparently, something is running and creating an infinite loop once someone creates an account,
 #Will work on it later on tonight. 
 
 	if @user.save
 		flash[:notice] = "Good times, now sign in and make a first post!"
-		redirect '/'
+		
 	else
 		flash[:alert] = "Try again!"
 		redirect '/signup'
@@ -52,11 +50,13 @@ post '/signup' do
 end
 
 post '/home' do
-	@user = User.authenticate(params['user']['email'],params['user']['password'])
-	if @user
-		session[:user_id]
-		redirect '/profile'
-	else
-		redirect '/'
-	end
+  @user = User.authenticate(params['user']['email'], params['user']['password'])
+  if @user
+    session[:user_id] = @user.uname
+    
+    redirect '/profile'
+  else
+    
+    redirect '/signup'
+  end
 end
