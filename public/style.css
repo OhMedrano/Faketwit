@@ -1,9 +1,17 @@
 body {
-	background-color:rgb(17,50,145);
-	color:white;
+	/*background-color:rgb(17,50,145);*/
+	color:black;
 }
 
 li {
 	display:inline;
 }
 
+#input1 input {
+	position:relative;
+	display:inline;
+	left :400px;
+	border:1px blue solid;
+	padding:5px;
+
+}

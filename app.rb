@@ -11,6 +11,30 @@ set :database, 'sqlite3:///users.sqlite3'
 
 require './models'
 
+enable :sessions
+use Rack::Flash, :sweep => true
+set :sessions => true
+
+
+helpers do
+  def current_user
+    if session[:user_id].nil?
+      nil
+    else
+      User.find(session[:user_id])
+    end
+  end
+end
+
+
+def current_user
+  if session[:user_id].nil?
+    nil
+  else
+    User.find(session[:user_id])
+  end
+end
+
 get '/' do 
   haml :home
 end
@@ -34,14 +58,13 @@ end
 #This post is just a temporary fix.
 post '/signup' do
 	@user = User.new(params['user'])
-	redirect '/home'
-#I commented this out because it was giving me tons of problems with a 'Stack Too Deep' error.
+	#I commented this out because it was giving me tons of problems with a 'Stack Too Deep' error.
 #Apparently, something is running and creating an infinite loop once someone creates an account,
 #Will work on it later on tonight. 
 
 	if @user.save
 		flash[:notice] = "Good times, now sign in and make a first post!"
-		
+		redirect '/home'
 	else
 		flash[:alert] = "Try again!"
 		redirect '/signup'

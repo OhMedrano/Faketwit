@@ -4,10 +4,6 @@ class User < ActiveRecord::Base
 		fname + lname
 	end
 
-	def email
-		email
-	end
-
 	attr_accessor :password
 
 	before_save :encrypt_password
